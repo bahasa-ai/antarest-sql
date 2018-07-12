@@ -96,17 +96,17 @@ result:
   "status": 200,
   "payload": [      
     {
-      "id": "1",
+      "id": 1,
       "name": "Thomas The Cat",
       "weight": 2
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Fluff The Cat",
       "weight": 5
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Muff The Cat",
       "weight": 2,
     }
@@ -126,7 +126,7 @@ Result:
   "status": 200,
   "payload": [      
     {
-      "id": "1",
+      "id": 1,
       "name": "Thomas The Cat",
       "weight": 2
     }
@@ -172,7 +172,7 @@ Result:
   "status": 200,
   "payload": [      
     {
-      "id": "1",
+      "id": 1,
       "name": "Thomas The Cat",
       "weight": 2
     }
@@ -236,7 +236,7 @@ Result:
   "status": 200,
   "payload": [
     {
-      "id": "4",
+      "id": 4,
       "name": "Puff The Cat",
       "weight": 3
     }
@@ -272,7 +272,7 @@ Result:
   "status": 200,
   "payload": [
     {
-      "id": "2",
+      "id": 2,
       "name": "Fluff The Cat",
       "weight": 5
     }
@@ -309,7 +309,7 @@ Result:
   "status": 200,
   "payload": [
     {
-      "id": "2",
+      "id": 2,
       "name": "Fluff The Cat",
       "weight": 5
     }
