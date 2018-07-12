@@ -4,6 +4,10 @@ Simple REST factory with sequelizejs. Antarest will simply generate your GET, PO
 __v0.0.1__: 
 - Initial release
 
+__v0.0.2__: 
+- Add query attribute in /query route
+- Update documentation for /query
+
 ## Installation
 ```npm install antarest-sql```
 
@@ -283,6 +287,37 @@ Result:
 ```
 
 __WARNING__: It is important for you to make sure you pass your conditions. If you pass an empty object all docs will be deleted.
+
+### __localhost:6969/cat/query - POST__
+Run your custom SQL query
+
+Example:
+```
+POST localhost:6969/cat/query
+```
+
+conditions
+``` json
+{
+  "query": "SELECT * FROM Cats WHERE id=2"  
+}
+```
+
+Result:
+``` json
+{
+  "status": 200,
+  "payload": [
+    {
+      "id": "2",
+      "name": "Fluff The Cat",
+      "weight": 5
+    }
+  ],
+  "msg": "Succeed",
+  "query": "SELECT * FROM Cats WHERE id=2"
+}
+```
 
 ## Options
 `NotFoundHandler`: __false__, Add 404 handler
