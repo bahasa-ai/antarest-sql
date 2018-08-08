@@ -27,6 +27,8 @@ app.use(
     //     storage: 'cat.sqlite'
     //   }
     // },
+    //  -- or using Sequelize object
+    // connection: new Sequelize('sqlite://cat.sqlite')
     services: [
       {
         path: '/cat', 

@@ -11,6 +11,10 @@ __v0.0.2__:
 __v0.0.4__:
  - Create antarest with object parameter
 
+__v0.0.5__:
+ - You can use the sequelize object as a value of connection in parameter
+ - And Sequelize.Model object as a value of service.model
+
 ## Installation
 ```npm install antarest-sql```
 
@@ -37,6 +41,11 @@ antarest({ CONNECTION, ARRAY_OF_SERVICE_OBJ, OPTIONS })
       },
       options: {}
     }
+    //  -- or using Sequelize.Model as a model
+    // model: sequelize.define('Cat', {
+    //   name: Sequelize.TEXT,
+    //   weight: Sequelize.INTEGER
+    // })
   }
 ]
 ```
@@ -81,6 +90,8 @@ app.use(
     //     storage: 'cat.sqlite'
     //   }
     // },
+    //  -- or using Sequelize object
+    // connection: new Sequelize('sqlite://cat.sqlite')
     services: [
       {
         path: '/cat', 
@@ -89,6 +100,11 @@ app.use(
           schema: Cat,
           options: {}
         }
+        //  -- or using Sequelize.Model as a model
+        // model: sequelize.define('Cat', {
+        //   name: Sequelize.TEXT,
+        //   weight: Sequelize.INTEGER
+        // })
       }
     ],
     options: {
