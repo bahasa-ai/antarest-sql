@@ -1,6 +1,6 @@
 {
   "name": "antarest-sql",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "description": "Easy to build REST microservices",
   "main": "index.js",
   "directories": {
