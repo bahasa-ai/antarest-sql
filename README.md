@@ -8,17 +8,18 @@ __v0.0.2__:
 - Add query attribute in /query route
 - Update documentation for /query
 
+__v0.0.4__:
+ - Create antarest with object parameter
+
 ## Installation
 ```npm install antarest-sql```
 
 ## Usage
 ``` javascript
-antarest(SQL_URI, SEQUELIZE_OPTIONS, ARRAY_OF_SERVICE_OBJ, OPTIONS)
+antarest({ CONNECTION, ARRAY_OF_SERVICE_OBJ, OPTIONS })
 ```
 
-`SQL_URI`: Your database URI
-
-`SEQUELIZE_OPTIONS`: [Sequelize connection object](http://docs.sequelizejs.com/manual/installation/usage.html#options)
+`CONNECTION`: Your database object or URI
 
 `ARRAY_OF_SERVICE_OBJ`: Your service object
 
@@ -33,7 +34,8 @@ antarest(SQL_URI, SEQUELIZE_OPTIONS, ARRAY_OF_SERVICE_OBJ, OPTIONS)
       schema: {  // database object
         name: Sequelize.TEXT,
         weight: Sequelize.INTEGER
-      }
+      },
+      options: {}
     }
   }
 ]
@@ -42,7 +44,7 @@ antarest(SQL_URI, SEQUELIZE_OPTIONS, ARRAY_OF_SERVICE_OBJ, OPTIONS)
 Above usage will return express object and can be directly used with app.use()
 
 ``` javascript
-var myRest = antarest(SQL_URI, SEQUELIZE_OPTIONS, ARRAY_OF_SERVICE_OBJ, OPTIONS)
+var myRest = antarest({ CONNECTION, ARRAY_OF_SERVICE_OBJ, OPTIONS })
 
 app.use(myRest)
 ```
@@ -64,19 +66,35 @@ app.use(bodyParser.urlencoded({ extended: true }))
 var Cat = { name: Sequelize.TEXT, weight: Sequelize.INTEGER }
 
 app.use(
-  antarest(
-    'sqlite://cat.sqlite', 
-    {}, 
-    [
-      { 
+  antarest({
+    connection: {
+      uri: 'sqlite://cat.sqlite',
+      options: {}
+    },
+    //  -- or using connection object
+    // connection: {
+    //   database: '',
+    //   username: '',
+    //   password: '',
+    //   options: {
+    //     dialect: 'sqlite',
+    //     storage: 'cat.sqlite'
+    //   }
+    // },
+    services: [
+      {
         path: '/cat', 
         model: {
           name: 'Cat',
-          schema: Cat
+          schema: Cat,
+          options: {}
         }
       }
-    ]
-  )
+    ],
+    options: {
+      NotFoundHandler: true
+    }
+  })
 )
 
 app.listen(6969)
