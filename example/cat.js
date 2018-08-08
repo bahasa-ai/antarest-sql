@@ -20,7 +20,8 @@ app.use(
         path: '/cat', 
         model: {
           name: 'Cat',
-          schema: Cat
+          schema: Cat,
+          options: {}
         }
       }
     ]
