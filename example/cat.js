@@ -12,11 +12,23 @@ app.use(bodyParser.urlencoded({ extended: true }))
 var Cat = { name: Sequelize.TEXT, weight: Sequelize.INTEGER }
 
 app.use(
-  antarest(
-    'sqlite://cat.sqlite', 
-    {}, 
-    [
-      { 
+  antarest({
+    connection: {
+      uri: 'sqlite://cat.sqlite',
+      options: {}
+    },
+    //  -- or using connection object
+    // connection: {
+    //   database: '',
+    //   username: '',
+    //   password: '',
+    //   options: {
+    //     dialect: 'sqlite',
+    //     storage: 'cat.sqlite'
+    //   }
+    // },
+    services: [
+      {
         path: '/cat', 
         model: {
           name: 'Cat',
@@ -24,8 +36,11 @@ app.use(
           options: {}
         }
       }
-    ]
-  )
+    ],
+    options: {
+      NotFoundHandler: true
+    }
+  })
 )
 
 app.listen(6969)
